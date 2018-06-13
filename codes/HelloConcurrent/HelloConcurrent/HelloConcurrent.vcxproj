@@ -118,6 +118,7 @@
     <ClCompile Include="HelloConcurrent.cpp" />
     <ClCompile Include="list2.1.cpp" />
     <ClCompile Include="list2.2.cpp" />
+    <ClCompile Include="list3.3.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

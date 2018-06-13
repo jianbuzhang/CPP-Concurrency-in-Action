@@ -1,18 +1,9 @@
-#include <thread>
 #include <iostream>
 
-using namespace std;
-
-void hello()
-{
-	std::cout<<"hello concurrent world\n";
-}
+using namespce std;
 
 int main()
 {
-	std::thread t(hello);
-	t.join();
-	//printf("Hello, world\n");
-	
-	//return 0;
+	std::cout<<"hello world\n";
+	return 1;
 }
