@@ -24,7 +24,7 @@
     <ClCompile Include="list2.2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="list3.3.cpp">
+    <ClCompile Include="list2.3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -56,6 +56,16 @@ void f()
 	do_something_in_current_thread();
 }
 
+
+struct transferOwnership
+{
+	void some_function();
+	void some_other_function();
+	//std::thread t1(some_function);
+
+
+};
+
 int main() 
 {
 	f();
