@@ -88,21 +88,73 @@ void f()
 } // 4
 
 // 清单2.4 使用分离线程去处理其他文档	**********************
-void edit_document(std::string const& filename)
+//void edit_document(std::string const& filename)
+//{
+//	open_document_and_display_gui(filename);
+//	while (!done_editing())
+//	{
+//		user_command cmd = get_user_input();
+//		if (cmd.type==open_new_document)
+//		{
+//			std::string const new_name = get_filename_from_user();
+//			std::thread t(edit_document, new_name);		//1
+//			t.detach();		//2
+//		}
+//		else
+//		{
+//			process_user_input(cmd);
+//		}
+//	}
+//}
+
+// 清单2.5 函数返回std::thread对象	**************************
+std::thread f1() 
 {
-	open_document_and_display_gui(filename);
-	while (!done_editing())
+	void some_function();
+	return std::thread(some_function);
+}
+
+
+std::thread g1() 
+{
+	void some_other_function(int);
+	std::thread t(some_other_function);
+	return t;
+}
+
+
+// 清单2.6 scoped_thread的用法	**************************
+class scoped_thread
+{
+public:
+	explicit scoped_thread(std::thread t_) :t(std::move(t_))	// 1
 	{
-		user_command cmd = get_user_input();
-		if (cmd.type==open_new_document)
+		if (!t.joinable())		// 2
 		{
-			std::string const new_name = get_filename_from_user();
-			std::thread t(edit_document, new_name);		//1
-			t.detach();		//2
-		}
-		else
-		{
-			process_user_input(cmd);
+			throw std::logic_error("no thread");
 		}
 	}
+	~scoped_thread()
+	{
+		t.join();	// 3
+	}
+	std::thread t;
+	scoped_thread(scoped_thread const&) = delete;
+	scoped_thread& operator=(scoped_thread const&) = delete;
+
+
+private:
+
+};
+
+struct func;	// 定义在清单2.1中
+
+void f2_6() 
+{
+	int some_local_state;
+}
+
+int main() 
+{
+	return 1;
 }
